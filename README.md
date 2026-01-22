@@ -6,8 +6,6 @@ This project demonstrates a **production-style 3-tier architecture on AWS** prov
 
 The architecture follows industry best practices by separating the **Web**, **Application**, and **Database** layers across **public and private subnets**, ensuring security, scalability, and maintainability.
 
-This repository is designed as a **DevOps learning + portfolio project**, suitable for beginners progressing toward real-world cloud infrastructure design.
-
 ---
 
 ## 🏗️ Architecture Overview
@@ -132,7 +130,7 @@ This follows the **principle of least privilege**.
 ### Prerequisites
 
 * AWS account
-* Terraform ≥ 1.3
+* Terraform
 * AWS CLI configured (`aws configure`)
 
 ### Steps
@@ -145,8 +143,6 @@ terraform apply
 ```
 
 Confirm with `yes` when prompted.
-
----
 
 ## 🧹 Cleanup
 
@@ -173,22 +169,9 @@ terraform destroy
 ## 📈 Future Improvements
 
 * Add remote backend (S3 + DynamoDB)
-* Add NAT Gateway for private subnet internet access
 * Implement ALB instead of direct EC2 access
 * Auto Scaling Groups
 * CI/CD integration
-* Architecture diagram
-
----
-
-## 🎯 Learning Outcomes
-
-By completing this project, you will understand:
-
-* Real-world AWS network design
-* Secure 3-tier architecture
-* Terraform module structure
-* Infrastructure as Code best practices
 
 ---
 
