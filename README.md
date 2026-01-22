@@ -54,7 +54,9 @@ terraform-3tier-architecture/
 │   └── rds/
 │       ├── main.tf
 │       ├── variables.tf
-│       └── outputs.tf
+│       ├── outputs.tf
+│       ├── security_group.tf
+│       └── subnet_group.tf
 │
 └── README.md
 ```
