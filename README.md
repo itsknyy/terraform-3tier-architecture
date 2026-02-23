@@ -2,9 +2,11 @@
 
 ## 📌 Project Overview
 
-This project demonstrates a **production-style 3-tier architecture on AWS** provisioned entirely using **Terraform (Infrastructure as Code)**.
+This project is a **hands-on learning project** that demonstrates a **3-tier architecture on AWS** provisioned entirely using **Terraform (Infrastructure as Code)**.
 
-The architecture follows industry best practices by separating the **Web**, **Application**, and **Database** layers across **public and private subnets**, ensuring security, scalability, and maintainability.
+The architecture separates the **Web**, **Application**, and **Database** layers across **public and private subnets**, following core AWS and Terraform concepts around security, modularity, and network segmentation.
+
+> ⚠️ This is built for learning purposes and does not include full production features such as High Availability, Auto Scaling or a remote backend.
 
 ---
 
@@ -102,9 +104,14 @@ This follows the **principle of least privilege**.
 
 ### RDS (MySQL)
 
-* Multi-AZ enabled
+* Single-AZ (subnet group spans 2 AZs as required by AWS)
 * Private subnet only
 * No public access
+
+> **Why 2 AZs for RDS?**  
+> AWS requires an RDS subnet group to span at least 2 Availability Zones - this is a platform requirement, not a choice. Even with a single-AZ RDS instance, we must provide subnets in 2 AZs when creating the subnet group.
+>
+> **For production:** Enable **Multi-AZ deployment** on RDS. This creates a standby replica in the second AZ and handles automatic failover if the primary instance goes down — no manual intervention needed.
 
 ---
 
@@ -163,7 +170,6 @@ terraform destroy
 * For production, use:
 
   * Remote backend (S3 + DynamoDB)
-  * NAT Gateway
   * Secrets Manager for DB credentials
 
 ---
@@ -173,6 +179,7 @@ terraform destroy
 * Add remote backend (S3 + DynamoDB)
 * Implement ALB instead of direct EC2 access
 * Auto Scaling Groups
+* Enable Multi-AZ on RDS
 * CI/CD integration
 
 ---
